@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     Eigen::Isometry3d lidarPose = Optimizer::sample_noise_from_se3(noise) * groundTruth;
 
     g2o::VertexSE3* v1 = optimizer.addSE3Node(groundTruth, 0, false);
+//    g2o::VertexSE3* v1 = optimizer.addSE3Node(initPose, 0, false);
 
     Matrix6d info = Optimizer::calcInfoMat(noise);
     optimizer.addSE3Edge(v1, imuPose, info, 0);

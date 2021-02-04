@@ -40,7 +40,7 @@ Optimizer::Optimizer(const bool& Verbose, const int& maxIteration) {
 }
 
 g2o::VertexSE3* Optimizer::addSE3Node(const Eigen::Isometry3d &pose, const int KFid, const bool& isFixed) {
-
+//g2o::VertexSim3Expmap
     auto vertex(new g2o::VertexSE3());
     g2o::SE3Quat pose_ = g2o::internal::toSE3Quat(pose);
     vertex->setId(KFid);
