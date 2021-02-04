@@ -1,4 +1,3 @@
-#cmake_minimum_required(VERSION 2.8)
 cmake_minimum_required(VERSION 3.5)
 project(pose_graph)
 message("start make pose_graph")
@@ -7,9 +6,13 @@ message("start make pose_graph")
 #add_definitions(-DCPP11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3 -march=native")
 
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
+
 set(ALL_TARGET_LIBRARIES "")
 include(cmake/global_defination.cmake)
 include(cmake/g2o.cmake)
+include(cmake/glog.cmake)
+
 
 include_directories(
         ${PROJECT_SOURCE_DIR}
