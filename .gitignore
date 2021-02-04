@@ -1,0 +1,6 @@
+.idea
+*.so
+cmake-*
+Log
+*.bag
+build
