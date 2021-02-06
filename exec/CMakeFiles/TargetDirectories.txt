@@ -1,5 +1,0 @@
-/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles/rebuild_cache.dir
-/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles/unary_edge.dir
-/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles/edit_cache.dir
-/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles/testSensor.dir
-/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles/RobustOptimize.dir
