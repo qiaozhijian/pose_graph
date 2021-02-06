@@ -8,6 +8,6 @@
 
 #include <string>
 //
-const std::string WORK_SPACE_PATH = "@WORK_SPACE_PATH@";
+const std::string WORK_SPACE_PATH = "/home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj";
 
 #endif
