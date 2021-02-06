@@ -12,6 +12,7 @@ set(ALL_TARGET_LIBRARIES "")
 include(cmake/global_defination.cmake)
 include(cmake/g2o.cmake)
 include(cmake/glog.cmake)
+#include(cmake/OpenCV.cmake)
 
 
 include_directories(
@@ -26,7 +27,18 @@ file(GLOB_RECURSE THIRD_PARTY_SRCS "Thirdparty/*.cpp")
 #list(REMOVE_ITEM ALL_SRCS ${THIRD_PARTY_SRCS})
 
 
-# lidar slam and localize
+#lidar slam and localize
 add_executable(unary_edge exec/unary_edge.cpp ${ALL_SRCS})
 target_link_libraries(unary_edge ${ALL_TARGET_LIBRARIES})
+
+#testSensor
+add_executable(testSensor exec/testSensor.cpp ${ALL_SRCS})
+target_link_libraries(testSensor ${ALL_TARGET_LIBRARIES})
+
+#RobustOptimize
+add_executable(RobustOptimize exec/RobustOptimize.cpp ${ALL_SRCS})
+target_link_libraries(RobustOptimize ${ALL_TARGET_LIBRARIES})
+
+
+
 

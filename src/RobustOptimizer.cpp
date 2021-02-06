@@ -1,29 +1,32 @@
 //
-// Created by qzj on 2021/2/4.
+// Created by zmy on 2021/2/5.
 //
 
-#include "optimizer.h"
+#include "RobustOptimizer.h"
 #include <iostream>
 #include "glog/logging.h"
 #include "g2o/stuff/sampler.h"
 #include "g2o/types/sba/types_six_dof_expmap.h"
-
 using namespace std;
 
-Optimizer::Optimizer(const bool& Verbose, const int& maxIteration) {
+vector<g2o::EdgeSE3Prior*> Myedges;
+
+RobustOptimizer::RobustOptimizer(const bool& Verbose, const int& maxIteration) {
 
     graph = new g2o::SparseOptimizer();
     _Verbose = Verbose;
     _MaxIterationTimes = maxIteration;
 
+
     typedef g2o::BlockSolverX BlockSolverType;
-    typedef g2o::LinearSolverEigen<BlockSolverType::PoseMatrixType> LinearSolverType; // 稠密线性求解器
+    typedef g2o::LinearSolverDense<BlockSolverType::PoseMatrixType> LinearSolverType; // 稠密线性求解器
     // 梯度下降方法，可以从GN, LM, DogLeg 中选
     auto solver = new g2o::OptimizationAlgorithmLevenberg(g2o::make_unique<BlockSolverType>(g2o::make_unique<LinearSolverType>()));
     // 设置求解器
     graph->setAlgorithm(solver);
     //打开调试输出
     graph->setVerbose(_Verbose);
+
 
     if (!graph->solver()){
         std::cerr << std::endl;
@@ -39,7 +42,7 @@ Optimizer::Optimizer(const bool& Verbose, const int& maxIteration) {
 
 }
 
-g2o::VertexSE3* Optimizer::addSE3Node(const Eigen::Isometry3d &pose, const int KFid, const bool& isFixed) {
+g2o::VertexSE3* RobustOptimizer::addSE3Node(const Eigen::Isometry3d &pose, const int KFid, const bool& isFixed) {
     auto vertex(new g2o::VertexSE3());
     g2o::SE3Quat pose_ = g2o::internal::toSE3Quat(pose);
     vertex->setId(KFid);
@@ -50,7 +53,7 @@ g2o::VertexSE3* Optimizer::addSE3Node(const Eigen::Isometry3d &pose, const int K
     return vertex;
 }
 
-void Optimizer::addSE3Edge(g2o::VertexSE3* &v1, g2o::VertexSE3* &v2,
+void RobustOptimizer::addSE3Edge(g2o::VertexSE3* &v1, g2o::VertexSE3* &v2,
                            const Eigen::Isometry3d &relative_pose,
                            const Matrix6d &info_matrix, int level) {
 
@@ -64,9 +67,10 @@ void Optimizer::addSE3Edge(g2o::VertexSE3* &v1, g2o::VertexSE3* &v2,
     rk->setDelta(1);
     edge->setLevel(level);
     graph->addEdge(edge);
+
 }
 
-void Optimizer::addSE3Edge(g2o::VertexSE3* &v1, const Eigen::Isometry3d &iso_pose,
+void RobustOptimizer::addSE3Edge(g2o::VertexSE3* &v1, const Eigen::Isometry3d &iso_pose,
                            const Matrix6d &info_matrix, int level) {
 
     auto edge = new g2o::EdgeSE3Prior();
@@ -79,9 +83,11 @@ void Optimizer::addSE3Edge(g2o::VertexSE3* &v1, const Eigen::Isometry3d &iso_pos
     edge->setParameterId(0, 0);
     edge->setLevel(level);
     graph->addEdge(edge);
+    Myedges.push_back(edge);
+    return;
 }
 
-void Optimizer::addSE3PlaneEdge(g2o::VertexSE3* &v1, int level) {
+void RobustOptimizer::addSE3PlaneEdge(g2o::VertexSE3* &v1, int level) {
 
     Matrix6d info = Matrix6d::Zero(6, 6);
 //    z, roll ,pitch 为 0
@@ -99,7 +105,7 @@ void Optimizer::addSE3PlaneEdge(g2o::VertexSE3* &v1, int level) {
 
 }
 
-void Optimizer::runOptimizer(int level) {
+void RobustOptimizer::runOptimizer(int level) {
 
     LOG(INFO) << std::endl
               << "--- pose graph optimization ---" << std::endl
@@ -129,17 +135,17 @@ void Optimizer::runOptimizer(int level) {
 
 }
 
-ulong Optimizer::getNodeSize() {
+ulong RobustOptimizer::getNodeSize() {
 
     return graph->vertices().size();
 }
 
-ulong Optimizer::getEdgeSize() {
+ulong RobustOptimizer::getEdgeSize() {
 
     return graph->edges().size();
 }
 
-bool Optimizer::removeSE3Node(g2o::VertexSE3 *node) {
+bool RobustOptimizer::removeSE3Node(g2o::VertexSE3 *node) {
 
     bool nodeDone = graph->removeVertex(node);
     if(!nodeDone)
@@ -157,7 +163,7 @@ bool Optimizer::removeSE3Node(g2o::VertexSE3 *node) {
 
 }
 
-Matrix6d Optimizer::calcInfoMat(Matrix6d cov) {
+Matrix6d RobustOptimizer::calcInfoMat(Matrix6d cov) {
 
     Matrix6d m = Matrix6d::Identity(6, 6);
 
@@ -167,7 +173,7 @@ Matrix6d Optimizer::calcInfoMat(Matrix6d cov) {
 
 }
 
-Matrix6d Optimizer::calcInfoMat(Vector6d cov) {
+Matrix6d RobustOptimizer::calcInfoMat(Vector6d cov) {
 
     Matrix6d m = Matrix6d::Identity(6, 6);
 
@@ -179,7 +185,7 @@ Matrix6d Optimizer::calcInfoMat(Vector6d cov) {
 
 }
 
-Eigen::Isometry3d Optimizer::sample_noise_from_se3(Vector6d& cov ) {
+Eigen::Isometry3d RobustOptimizer::sample_noise_from_se3(Vector6d& cov ) {
 
     double nx = g2o::Sampler::gaussRand(0., cov(0));
     double ny = g2o::Sampler::gaussRand(0., cov(1));
@@ -198,5 +204,19 @@ Eigen::Isometry3d Optimizer::sample_noise_from_se3(Vector6d& cov ) {
     retval.translation() = Eigen::Vector3d(nx, ny, nz);
 
     return retval;
+}
+
+void RobustOptimizer::RemoveOutliers( int num_e){
+  int n = 0;
+  for(auto e:Myedges) {
+    n++;
+    if (e->chi2() > 2) {
+      e->setLevel(1);
+      LOG(INFO) << "edge" << n << "  is an outlier" << endl;
+    }
+    e->setRobustKernel(0);
+  }
+  LOG(INFO)<<endl<< "Finish removing outliers"<<endl<<"---- round2 ----"<<endl;
+  return ;
 }
 
