@@ -1,4 +1,4 @@
-# Install script for directory: /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj
+# Install script for directory: /home/cobra/Slam/MySlam/pose_graph
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/cobra/Slam/MySlam/pose_graph/exec/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

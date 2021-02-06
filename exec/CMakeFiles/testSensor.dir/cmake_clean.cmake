@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/testSensor.dir/src/doubleoptimizer.cpp.o"
+  "CMakeFiles/testSensor.dir/src/RobustOptimizer.cpp.o"
   "CMakeFiles/testSensor.dir/src/optimizer.cpp.o"
   "CMakeFiles/testSensor.dir/testSensor.cpp.o"
   "testSensor"

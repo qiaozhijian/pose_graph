@@ -27,17 +27,17 @@ file(GLOB_RECURSE THIRD_PARTY_SRCS "Thirdparty/*.cpp")
 #list(REMOVE_ITEM ALL_SRCS ${THIRD_PARTY_SRCS})
 
 
-# lidar slam and localize
-#add_executable(unary_edge exec/unary_edge.cpp ${ALL_SRCS})
-#target_link_libraries(unary_edge ${ALL_TARGET_LIBRARIES})
+#lidar slam and localize
+add_executable(unary_edge exec/unary_edge.cpp ${ALL_SRCS})
+target_link_libraries(unary_edge ${ALL_TARGET_LIBRARIES})
 
-# testSensor
-#add_executable(testSensor exec/testSensor.cpp ${ALL_SRCS})
-#target_link_libraries(testSensor ${ALL_TARGET_LIBRARIES})
+#testSensor
+add_executable(testSensor exec/testSensor.cpp ${ALL_SRCS})
+target_link_libraries(testSensor ${ALL_TARGET_LIBRARIES})
 
-# doubleoptimizer
-add_executable(Mydoubleoptimize exec/Mydoubleoptimize.cpp ${ALL_SRCS})
-target_link_libraries(Mydoubleoptimize ${ALL_TARGET_LIBRARIES})
+#RobustOptimize
+add_executable(RobustOptimize exec/RobustOptimize.cpp ${ALL_SRCS})
+target_link_libraries(RobustOptimize ${ALL_TARGET_LIBRARIES})
 
 
 

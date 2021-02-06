@@ -63,16 +63,18 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj
+CMAKE_SOURCE_DIR = /home/cobra/Slam/MySlam/pose_graph
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec
+CMAKE_BINARY_DIR = /home/cobra/Slam/MySlam/pose_graph/exec
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Mydoubleoptimize.dir/all
+all: CMakeFiles/unary_edge.dir/all
+all: CMakeFiles/testSensor.dir/all
+all: CMakeFiles/RobustOptimize.dir/all
 
 .PHONY : all
 
@@ -82,36 +84,92 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Mydoubleoptimize.dir/clean
+clean: CMakeFiles/unary_edge.dir/clean
+clean: CMakeFiles/testSensor.dir/clean
+clean: CMakeFiles/RobustOptimize.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Mydoubleoptimize.dir
+# Target rules for target CMakeFiles/unary_edge.dir
 
 # All Build rule for target.
-CMakeFiles/Mydoubleoptimize.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec/CMakeFiles --progress-num=1,2,3 "Built target Mydoubleoptimize"
-.PHONY : CMakeFiles/Mydoubleoptimize.dir/all
+CMakeFiles/unary_edge.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles --progress-num=9,10,11,12 "Built target unary_edge"
+.PHONY : CMakeFiles/unary_edge.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Mydoubleoptimize.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Mydoubleoptimize.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec/CMakeFiles 0
-.PHONY : CMakeFiles/Mydoubleoptimize.dir/rule
+CMakeFiles/unary_edge.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/unary_edge.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles 0
+.PHONY : CMakeFiles/unary_edge.dir/rule
 
 # Convenience name for target.
-Mydoubleoptimize: CMakeFiles/Mydoubleoptimize.dir/rule
+unary_edge: CMakeFiles/unary_edge.dir/rule
 
-.PHONY : Mydoubleoptimize
+.PHONY : unary_edge
 
 # clean rule for target.
-CMakeFiles/Mydoubleoptimize.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/clean
-.PHONY : CMakeFiles/Mydoubleoptimize.dir/clean
+CMakeFiles/unary_edge.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/clean
+.PHONY : CMakeFiles/unary_edge.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/testSensor.dir
+
+# All Build rule for target.
+CMakeFiles/testSensor.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles --progress-num=5,6,7,8 "Built target testSensor"
+.PHONY : CMakeFiles/testSensor.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/testSensor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testSensor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles 0
+.PHONY : CMakeFiles/testSensor.dir/rule
+
+# Convenience name for target.
+testSensor: CMakeFiles/testSensor.dir/rule
+
+.PHONY : testSensor
+
+# clean rule for target.
+CMakeFiles/testSensor.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/clean
+.PHONY : CMakeFiles/testSensor.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/RobustOptimize.dir
+
+# All Build rule for target.
+CMakeFiles/RobustOptimize.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles --progress-num=1,2,3,4 "Built target RobustOptimize"
+.PHONY : CMakeFiles/RobustOptimize.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/RobustOptimize.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/RobustOptimize.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles 0
+.PHONY : CMakeFiles/RobustOptimize.dir/rule
+
+# Convenience name for target.
+RobustOptimize: CMakeFiles/RobustOptimize.dir/rule
+
+.PHONY : RobustOptimize
+
+# clean rule for target.
+CMakeFiles/RobustOptimize.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/clean
+.PHONY : CMakeFiles/RobustOptimize.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

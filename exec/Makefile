@@ -67,10 +67,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj
+CMAKE_SOURCE_DIR = /home/cobra/Slam/MySlam/pose_graph
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec
+CMAKE_BINARY_DIR = /home/cobra/Slam/MySlam/pose_graph/exec
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec/CMakeFiles /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles /home/cobra/Slam/MySlam/pose_graph/exec//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cobra/Slam/MySlam/pose_graph/exec/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,71 +130,190 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Mydoubleoptimize
+# Target rules for targets named unary_edge
 
 # Build rule for target.
-Mydoubleoptimize: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Mydoubleoptimize
-.PHONY : Mydoubleoptimize
+unary_edge: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unary_edge
+.PHONY : unary_edge
 
 # fast build rule for target.
-Mydoubleoptimize/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/build
-.PHONY : Mydoubleoptimize/fast
+unary_edge/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/build
+.PHONY : unary_edge/fast
 
-Mydoubleoptimize.o: Mydoubleoptimize.cpp.o
+#=============================================================================
+# Target rules for targets named testSensor
 
-.PHONY : Mydoubleoptimize.o
+# Build rule for target.
+testSensor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testSensor
+.PHONY : testSensor
+
+# fast build rule for target.
+testSensor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/build
+.PHONY : testSensor/fast
+
+#=============================================================================
+# Target rules for targets named RobustOptimize
+
+# Build rule for target.
+RobustOptimize: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RobustOptimize
+.PHONY : RobustOptimize
+
+# fast build rule for target.
+RobustOptimize/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/build
+.PHONY : RobustOptimize/fast
+
+RobustOptimize.o: RobustOptimize.cpp.o
+
+.PHONY : RobustOptimize.o
 
 # target to build an object file
-Mydoubleoptimize.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/Mydoubleoptimize.cpp.o
-.PHONY : Mydoubleoptimize.cpp.o
+RobustOptimize.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/RobustOptimize.cpp.o
+.PHONY : RobustOptimize.cpp.o
 
-Mydoubleoptimize.i: Mydoubleoptimize.cpp.i
+RobustOptimize.i: RobustOptimize.cpp.i
 
-.PHONY : Mydoubleoptimize.i
+.PHONY : RobustOptimize.i
 
 # target to preprocess a source file
-Mydoubleoptimize.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/Mydoubleoptimize.cpp.i
-.PHONY : Mydoubleoptimize.cpp.i
+RobustOptimize.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/RobustOptimize.cpp.i
+.PHONY : RobustOptimize.cpp.i
 
-Mydoubleoptimize.s: Mydoubleoptimize.cpp.s
+RobustOptimize.s: RobustOptimize.cpp.s
 
-.PHONY : Mydoubleoptimize.s
+.PHONY : RobustOptimize.s
 
 # target to generate assembly for a file
-Mydoubleoptimize.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/Mydoubleoptimize.cpp.s
-.PHONY : Mydoubleoptimize.cpp.s
+RobustOptimize.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/RobustOptimize.cpp.s
+.PHONY : RobustOptimize.cpp.s
 
-src/doubleoptimizer.o: src/doubleoptimizer.cpp.o
+src/RobustOptimizer.o: src/RobustOptimizer.cpp.o
 
-.PHONY : src/doubleoptimizer.o
+.PHONY : src/RobustOptimizer.o
 
 # target to build an object file
-src/doubleoptimizer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/src/doubleoptimizer.cpp.o
-.PHONY : src/doubleoptimizer.cpp.o
+src/RobustOptimizer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/src/RobustOptimizer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/src/RobustOptimizer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/src/RobustOptimizer.cpp.o
+.PHONY : src/RobustOptimizer.cpp.o
 
-src/doubleoptimizer.i: src/doubleoptimizer.cpp.i
+src/RobustOptimizer.i: src/RobustOptimizer.cpp.i
 
-.PHONY : src/doubleoptimizer.i
+.PHONY : src/RobustOptimizer.i
 
 # target to preprocess a source file
-src/doubleoptimizer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/src/doubleoptimizer.cpp.i
-.PHONY : src/doubleoptimizer.cpp.i
+src/RobustOptimizer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/src/RobustOptimizer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/src/RobustOptimizer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/src/RobustOptimizer.cpp.i
+.PHONY : src/RobustOptimizer.cpp.i
 
-src/doubleoptimizer.s: src/doubleoptimizer.cpp.s
+src/RobustOptimizer.s: src/RobustOptimizer.cpp.s
 
-.PHONY : src/doubleoptimizer.s
+.PHONY : src/RobustOptimizer.s
 
 # target to generate assembly for a file
-src/doubleoptimizer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Mydoubleoptimize.dir/build.make CMakeFiles/Mydoubleoptimize.dir/src/doubleoptimizer.cpp.s
-.PHONY : src/doubleoptimizer.cpp.s
+src/RobustOptimizer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/src/RobustOptimizer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/src/RobustOptimizer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/src/RobustOptimizer.cpp.s
+.PHONY : src/RobustOptimizer.cpp.s
+
+src/optimizer.o: src/optimizer.cpp.o
+
+.PHONY : src/optimizer.o
+
+# target to build an object file
+src/optimizer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/src/optimizer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/src/optimizer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/src/optimizer.cpp.o
+.PHONY : src/optimizer.cpp.o
+
+src/optimizer.i: src/optimizer.cpp.i
+
+.PHONY : src/optimizer.i
+
+# target to preprocess a source file
+src/optimizer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/src/optimizer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/src/optimizer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/src/optimizer.cpp.i
+.PHONY : src/optimizer.cpp.i
+
+src/optimizer.s: src/optimizer.cpp.s
+
+.PHONY : src/optimizer.s
+
+# target to generate assembly for a file
+src/optimizer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/src/optimizer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/src/optimizer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobustOptimize.dir/build.make CMakeFiles/RobustOptimize.dir/src/optimizer.cpp.s
+.PHONY : src/optimizer.cpp.s
+
+testSensor.o: testSensor.cpp.o
+
+.PHONY : testSensor.o
+
+# target to build an object file
+testSensor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/testSensor.cpp.o
+.PHONY : testSensor.cpp.o
+
+testSensor.i: testSensor.cpp.i
+
+.PHONY : testSensor.i
+
+# target to preprocess a source file
+testSensor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/testSensor.cpp.i
+.PHONY : testSensor.cpp.i
+
+testSensor.s: testSensor.cpp.s
+
+.PHONY : testSensor.s
+
+# target to generate assembly for a file
+testSensor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSensor.dir/build.make CMakeFiles/testSensor.dir/testSensor.cpp.s
+.PHONY : testSensor.cpp.s
+
+unary_edge.o: unary_edge.cpp.o
+
+.PHONY : unary_edge.o
+
+# target to build an object file
+unary_edge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/unary_edge.cpp.o
+.PHONY : unary_edge.cpp.o
+
+unary_edge.i: unary_edge.cpp.i
+
+.PHONY : unary_edge.i
+
+# target to preprocess a source file
+unary_edge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/unary_edge.cpp.i
+.PHONY : unary_edge.cpp.i
+
+unary_edge.s: unary_edge.cpp.s
+
+.PHONY : unary_edge.s
+
+# target to generate assembly for a file
+unary_edge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unary_edge.dir/build.make CMakeFiles/unary_edge.dir/unary_edge.cpp.s
+.PHONY : unary_edge.cpp.s
 
 # Help Target
 help:
@@ -204,13 +323,24 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Mydoubleoptimize"
-	@echo "... Mydoubleoptimize.o"
-	@echo "... Mydoubleoptimize.i"
-	@echo "... Mydoubleoptimize.s"
-	@echo "... src/doubleoptimizer.o"
-	@echo "... src/doubleoptimizer.i"
-	@echo "... src/doubleoptimizer.s"
+	@echo "... RobustOptimize"
+	@echo "... testSensor"
+	@echo "... unary_edge"
+	@echo "... RobustOptimize.o"
+	@echo "... RobustOptimize.i"
+	@echo "... RobustOptimize.s"
+	@echo "... src/RobustOptimizer.o"
+	@echo "... src/RobustOptimizer.i"
+	@echo "... src/RobustOptimizer.s"
+	@echo "... src/optimizer.o"
+	@echo "... src/optimizer.i"
+	@echo "... src/optimizer.s"
+	@echo "... testSensor.o"
+	@echo "... testSensor.i"
+	@echo "... testSensor.s"
+	@echo "... unary_edge.o"
+	@echo "... unary_edge.i"
+	@echo "... unary_edge.s"
 .PHONY : help
 
 

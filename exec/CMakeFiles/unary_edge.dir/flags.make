@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/exec/include -I/usr/include/suitesparse -I/home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj -I/home/cobra/Slam/MySlam/pose_graph/pose_graph-qzj/include
+CXX_INCLUDES = -I/home/cobra/Slam/MySlam/pose_graph/exec/include -I/usr/include/suitesparse -I/home/cobra/Slam/MySlam/pose_graph -I/home/cobra/Slam/MySlam/pose_graph/include
 
 CXX_FLAGS =  -std=c++17 -O3 -march=native
 

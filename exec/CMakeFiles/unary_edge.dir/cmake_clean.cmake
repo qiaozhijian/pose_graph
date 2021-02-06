@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/unary_edge.dir/src/RobustOptimizer.cpp.o"
   "CMakeFiles/unary_edge.dir/src/optimizer.cpp.o"
   "CMakeFiles/unary_edge.dir/unary_edge.cpp.o"
   "unary_edge"
