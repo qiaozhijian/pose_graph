@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
     Vector6d noise;
     double transNoise = 0.1;
-    double rotNoise = 0.01;
+    double rotNoise = 10 / 180.0 *M_PI;
     noise << transNoise,transNoise,transNoise,rotNoise,rotNoise,rotNoise;
     Optimizer::sample_noise_from_se3(noise);
 
@@ -33,23 +33,14 @@ int main(int argc, char *argv[])
     Eigen::Isometry3d cameraPose = Optimizer::sample_noise_from_se3(noise) * groundTruth;
     Eigen::Isometry3d lidarPose = Optimizer::sample_noise_from_se3(noise) * groundTruth;
 
-    //g2o::VertexSE3* v1 = optimizer.addSE3Node(groundTruth, 0, false);
     g2o::VertexSE3* v1 = optimizer.addSE3Node(initPose, 0, false);
-/*
-    g2o::SE3Quat INITPose = g2o::internal::toSE3Quat(initPose);
-    g2o::VertexSE3Expmap* v1 = optimizer.addSE3ExpNode(INITPose, 0, false);
-*/
+
     Matrix6d info = Optimizer::calcInfoMat(noise);
 
     optimizer.addSE3Edge(v1, imuPose, info, 0);
     optimizer.addSE3Edge(v1, cameraPose, info, 0);
     optimizer.addSE3Edge(v1, lidarPose, info, 0);
 
-/*
-    optimizer.addSE3ExpEdge(v1, imuPose, info, 0);
-    optimizer.addSE3ExpEdge(v1, cameraPose, info, 0);
-    optimizer.addSE3ExpEdge(v1, lidarPose, info, 0);
-*/
     Eigen::Isometry3d initnodePose = v1->estimate();
     //G2O_TYPES_SLAM3D_API Isometry3D fromSE3Quat(const SE3Quat& t);
     LOG(INFO)<< "Before optimize, \n" << initnodePose.matrix() <<endl;
@@ -59,4 +50,7 @@ int main(int argc, char *argv[])
     Eigen::Isometry3d nodePose = v1->estimate();
 
     LOG(INFO)<< "After optimize, \n" << nodePose.matrix() <<endl;
+
+    PrintDeltaPose(groundTruth, nodePose);
+
 }

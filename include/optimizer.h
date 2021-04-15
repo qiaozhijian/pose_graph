@@ -26,6 +26,7 @@
 #include <g2o/solvers/pcg/linear_solver_pcg.h>
 #include "g2o/core/robust_kernel_impl.h"
 #include <g2o/types/sba/vertex_se3_expmap.h>
+#include "CommonFunc.h"
 
 typedef Eigen::Matrix<double, 6, 6> Matrix6d;
 typedef Eigen::Matrix<double, 6, 1> Vector6d;
@@ -34,7 +35,7 @@ class Optimizer {
 
 public:
 
-    Optimizer(const bool& Verbose, const int& maxIteration);
+    Optimizer(const bool& verbose, const int& maxIteration);
 
     g2o::VertexSE3* addSE3Node(const Eigen::Isometry3d &pose, const int KFid, const bool& isFixed);
 
@@ -60,13 +61,19 @@ public:
 
     static Eigen::Isometry3d sample_noise_from_se3(Vector6d& cov );
 
-private:
+protected:
 
     g2o::SparseOptimizer* graph;
 
-    bool _Verbose;
+    bool _verbose;
 
     int _MaxIterationTimes;
+
+    std::vector<g2o::EdgeSE3Prior*> unary_edges;
+
+    std::vector<g2o::EdgeSE3*> binary_edges;
+
+    std::vector<g2o::VertexSE3*> nodes;
 };
 
 

@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 project(pose_graph)
 message("start make pose_graph")
 
-# 一定要加-march=native， 不然使用pcl的一些函数会报错
-#add_definitions(-DCPP11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3 -march=native")
+# -march=native这个参数需谨慎
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3 ")
+set(CMAKE_CXX_STANDARD 17)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
@@ -31,12 +31,8 @@ file(GLOB_RECURSE THIRD_PARTY_SRCS "Thirdparty/*.cpp")
 add_executable(unary_edge exec/unary_edge.cpp ${ALL_SRCS})
 target_link_libraries(unary_edge ${ALL_TARGET_LIBRARIES})
 
-#testSensor
-add_executable(testSensor exec/testSensor.cpp ${ALL_SRCS})
-target_link_libraries(testSensor ${ALL_TARGET_LIBRARIES})
-
 #RobustOptimize
-add_executable(RobustOptimize exec/RobustOptimize.cpp ${ALL_SRCS})
+add_executable(RobustOptimize exec/RobustTest.cpp ${ALL_SRCS})
 target_link_libraries(RobustOptimize ${ALL_TARGET_LIBRARIES})
 
 

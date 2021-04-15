@@ -10,10 +10,10 @@
 
 using namespace std;
 
-Optimizer::Optimizer(const bool& Verbose, const int& maxIteration) {
+Optimizer::Optimizer(const bool& verbose, const int& maxIteration) {
 
     graph = new g2o::SparseOptimizer();
-    _Verbose = Verbose;
+    _verbose = verbose;
     _MaxIterationTimes = maxIteration;
 
     typedef g2o::BlockSolverX BlockSolverType;
@@ -23,7 +23,7 @@ Optimizer::Optimizer(const bool& Verbose, const int& maxIteration) {
     // 设置求解器
     graph->setAlgorithm(solver);
     //打开调试输出
-    graph->setVerbose(_Verbose);
+    graph->setVerbose(_verbose);
 
     if (!graph->solver()){
         std::cerr << std::endl;
@@ -47,6 +47,8 @@ g2o::VertexSE3* Optimizer::addSE3Node(const Eigen::Isometry3d &pose, const int K
     vertex->setFixed(isFixed);
     graph->addVertex(vertex);
 
+    nodes.push_back(vertex);
+
     return vertex;
 }
 
@@ -59,11 +61,10 @@ void Optimizer::addSE3Edge(g2o::VertexSE3* &v1, g2o::VertexSE3* &v2,
     edge->setInformation(info_matrix);
     edge->setVertex(0, v1);
     edge->setVertex(1, v2);
-    g2o::RobustKernelHuber* rk = new g2o::RobustKernelHuber;
-    edge->setRobustKernel(rk);
-    rk->setDelta(1);
     edge->setLevel(level);
     graph->addEdge(edge);
+
+    binary_edges.push_back(edge);
 }
 
 void Optimizer::addSE3Edge(g2o::VertexSE3* &v1, const Eigen::Isometry3d &iso_pose,
@@ -73,12 +74,12 @@ void Optimizer::addSE3Edge(g2o::VertexSE3* &v1, const Eigen::Isometry3d &iso_pos
     edge->setVertex(0, v1);
     edge->setMeasurement(iso_pose);
     edge->setInformation(info_matrix);
-    g2o::RobustKernelHuber* rk = new g2o::RobustKernelHuber;
-    edge->setRobustKernel(rk);
-    rk->setDelta(1);
     edge->setParameterId(0, 0);
     edge->setLevel(level);
+
     graph->addEdge(edge);
+
+    unary_edges.push_back(edge);
 }
 
 void Optimizer::addSE3PlaneEdge(g2o::VertexSE3* &v1, int level) {

@@ -25,9 +25,9 @@ int main(int argc, char *argv[]) {
 
     Vector6d noise;
     Vector6d morenoise;
-    int n = 40;
-    double transNoise = 0.1 ;
-    double rotNoise = 0.01 ;
+    int n = 10;
+    double transNoise = 0.1;
+    double rotNoise = 10 / 180.0 *M_PI;
     double moretransNoise = transNoise*n;
     double morerotNoise = rotNoise*n;
     noise << transNoise, transNoise, transNoise, rotNoise, rotNoise, rotNoise;
@@ -62,11 +62,15 @@ int main(int argc, char *argv[]) {
 
 
     Eigen::Isometry3d initnodePose = v1->estimate();
-    LOG(INFO) << "Before optimize, \n" << initnodePose.matrix() << endl;
+    LOG(INFO) << "The groundTruth, \n" << groundTruth.matrix() << endl;
     optimizer.runOptimizer(0);
     Eigen::Isometry3d nodePose = v1->estimate();
     LOG(INFO) << "After optimize, \n" << nodePose.matrix() << endl;
-    optimizer.RemoveOutliers(num_sensors);
+    optimizer.RemoveOutliers();
     optimizer.runOptimizer(0);
-  }
+    nodePose = v1->estimate();
+    LOG(INFO) << "After optimize, \n" << nodePose.matrix() << endl;
+
+    PrintDeltaPose(groundTruth, nodePose);
+}
 
